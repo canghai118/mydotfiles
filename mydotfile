@@ -1,0 +1,68 @@
+#!/bin/sh
+action=$1
+target=$2
+
+usage="usage:mydotfile commit|restore [target]";
+
+if [[ ! $action || ! $target || ( $action != "commit" && $action != "restore" ) ]]; then
+	echo $usage; 
+	exit 0;
+fi
+
+all_targets=(vim tmux zsh);
+
+if [[ " ${all_targets[@]} " =~ " ${target} " ]]; then
+	target_found=true;
+else
+	target_found=false;
+fi
+
+function join {
+	local IFS="$1";
+	shift;
+	echo "$*";
+}
+
+if [ $target_found == "false" ]; then
+	echo "target not found, avaliable target are:";
+	join " " "${all_targets[@]}"
+	exit;
+fi
+
+fname="$action"_"$target";
+
+function commit_vim {
+	cp ~/.vimrc ./.vimrc
+}
+
+function restore_vim {
+	cp ./.vimrc ~/.vimrc	
+}
+
+function commit_tmux {
+	cp ~/.tmux.conf ./.tmux.conf
+}
+
+function restore_tmux {
+	cp ./.tmux.conf ~/.tmux.conf
+}
+
+fname_type=`type -t $fname`;
+
+if [[ ! $fname_type || $fname_type != "function" ]]; then
+	echo $fname not exist;
+	exit 0;
+fi
+
+if [[ $action == "restore" ]]; then
+	git pull;
+fi 
+
+echo call $fname;
+
+if [[ $action == "commit" ]]; then
+	git add -A :/
+	git commit -a -m "commit dotfiles";
+	git push;
+fi
+
