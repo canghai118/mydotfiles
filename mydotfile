@@ -58,7 +58,7 @@ if [[ $action == "restore" ]]; then
 	git pull;
 fi 
 
-echo call $fname;
+$fname;
 
 if [[ $action == "commit" ]]; then
 	git add -A :/
