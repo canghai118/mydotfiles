@@ -3,6 +3,8 @@ set ruler
 " set cursorline
 set syntax=on
 set autoindent
+set smartindent
+filetype indent on
 set cindent
 set tabstop=4
 set shiftwidth=4
