@@ -71,6 +71,6 @@ $fname;
 if [[ $action == "commit" ]]; then
 	git add -A :/
 	git commit -a -m "commit dotfiles";
-	git push;
+	git push origin master;
 fi
 
