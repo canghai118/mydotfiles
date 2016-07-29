@@ -10,6 +10,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set hlsearch
+set backspace=2
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
@@ -29,8 +30,12 @@ Plugin 'VundleVim/Vundle.vim'
 " vim-less
 Plugin 'groenewege/vim-less'
 
+" editorconfig
+Plugin 'editorconfig/editorconfig-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+syntax on
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
