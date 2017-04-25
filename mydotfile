@@ -9,7 +9,7 @@ if [[ ! $action || ! $target || ( $action != "commit" && $action != "restore" ) 
 	exit 0;
 fi
 
-all_targets=(vim tmux zsh tmux_launcher);
+all_targets=(vim tmux tmux_old zsh tmux_launcher);
 
 if [[ " ${all_targets[@]} " =~ " ${target} " ]]; then
 	target_found=true;
@@ -45,6 +45,14 @@ function commit_tmux {
 
 function restore_tmux {
 	cp ./.tmux.conf ~/.tmux.conf
+}
+
+function commit_tmux_old {
+	cp ~/.tmux.conf ./.tmux_old.conf
+}
+
+function restore_tmux_old {
+	cp ./.tmux_old.conf ~/.tmux.conf
 }
 
 function commit_tmux_launcher {
