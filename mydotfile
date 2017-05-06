@@ -9,7 +9,7 @@ if [[ ! $action || ! $target || ( $action != "commit" && $action != "restore" ) 
 	exit 0;
 fi
 
-all_targets=(vim tmux tmux_old zsh tmux_launcher);
+all_targets=(vim tmux tmux_old zsh tmux_launcher zsh);
 
 if [[ " ${all_targets[@]} " =~ " ${target} " ]]; then
 	target_found=true;
@@ -61,6 +61,14 @@ function commit_tmux_launcher {
 
 function restore_tmux_launcher {
 	cp ./zjyworkspace ~/zjyworkspace
+}
+
+function commit_zsh {
+	cp ~/.zshrc ./.zshrc
+}
+
+function restore_zsh {
+	cp ./.zshrc ~/.zshrc
 }
 
 fname_type=`type -t $fname`;
