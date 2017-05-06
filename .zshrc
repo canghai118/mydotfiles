@@ -83,3 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+zenv="$HOME/.zenv"
+if [ -f "$zenv" ]; then
+	source "$zenv"
+fi
