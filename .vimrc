@@ -11,9 +11,13 @@ set shiftwidth=4
 set softtabstop=4
 set hlsearch
 set backspace=2
+set mouse=a
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
+
+" needed so that vim still understands escape sequences
+nnoremap <esc>^[ <esc>^[
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -32,6 +36,12 @@ Plugin 'groenewege/vim-less'
 
 " editorconfig
 Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'scrooloose/nerdtree'
+
+Bundle 'xolox/vim-misc'
+
+Bundle 'xolox/vim-lua-ftplugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
